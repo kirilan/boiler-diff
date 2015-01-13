@@ -4,11 +4,10 @@
       <h1>Dashboard</h1>
     </div>
 
-    <ul class="list-group">
-      {{#each items}}
-        <li class="list-group-item">{{ name }} <span class="label label-default">{{ rating }}</span></li>
-      {{/each}}
-    </ul>
+    {{#each vi_hosts}}
+        <li>{{Name}} -- {{#each creq_hosts}} {{this}} {{/each}}</li>
+
+    {{/each}}
 
   </div>
 </template>

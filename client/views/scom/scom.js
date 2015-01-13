@@ -1,0 +1,3 @@
+Template.scom.rendered = function() {
+
+};

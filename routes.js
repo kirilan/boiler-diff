@@ -8,10 +8,7 @@ Router.map(function() {
     path: '/dashboard',
     waitOn: function() {
       return this.subscribe("items");
-    },
-    data: {
-      items: Items.find({})
-    },
+    },    
     onAfterAction: function() {
       SEO.set({
         title: 'Dashboard | ' + SEO.settings.title
@@ -24,12 +21,33 @@ Router.map(function() {
     waitOn: function() {
       return this.subscribe("CREQList");
     },
-    data: {
-      creq: SystemListCREQ.find({})
+    onAfterAction: function() {
+      SEO.set({
+        title: 'CREQ List | ' + SEO.settings.title
+      });
+    }
+  });
+
+  this.route('scom', {
+    path: '/scom',
+    waitOn: function() {
+      return this.subscribe("SCOMList");
     },
     onAfterAction: function() {
       SEO.set({
-        title: 'Dashboard | ' + SEO.settings.title
+        title: 'SCOM List | ' + SEO.settings.title
+      });
+    }
+  });
+
+  this.route('vi', {
+    path: '/vi',
+    waitOn: function() {
+      return this.subscribe("VI");
+    },
+    onAfterAction: function() {
+      SEO.set({
+        title: 'VI List | ' + SEO.settings.title
       });
     }
   });
