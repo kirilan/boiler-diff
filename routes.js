@@ -20,6 +20,21 @@ Router.map(function() {
     }
   });
 
+  this.route('creq', {
+    path: '/creq',
+    waitOn: function() {
+      return this.subscribe("CREQList");
+    },
+    data: {
+      creq: SystemListCREQ.find({})
+    },
+    onAfterAction: function() {
+      SEO.set({
+        title: 'Dashboard | ' + SEO.settings.title
+      });
+    }
+  });
+
   this.route('profile', {
     path: '/profile',
     data: function() {

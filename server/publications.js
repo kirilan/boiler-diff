@@ -13,3 +13,20 @@ Meteor.publishComposite("items", function() {
     // ]
   }
 });
+
+
+Meteor.publishComposite("CREQList", function() {
+  return {
+    find: function() {
+      return SystemListCREQ.find({});
+    }
+    // ,
+    // children: [
+    //   {
+    //     find: function(item) {
+    //       return [];
+    //     }
+    //   }
+    // ]
+  }
+});
