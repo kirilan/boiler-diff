@@ -3,7 +3,7 @@ accounts-password@1.0.5
 accounts-ui@1.1.4
 accounts-ui-unstyled@1.1.5
 alanning:roles@1.2.13
-aldeed:tabular@0.2.3
+aldeed:tabular@0.2.2
 anti:fake@0.4.1
 application-configuration@1.0.4
 autoupdate@1.1.4
@@ -17,7 +17,7 @@ check@1.0.3
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.5
 cunneen:mailgun@0.9.1
-dburles:collection-helpers@1.0.2
+dburles:collection-helpers@1.0.1
 dburles:factory@0.3.7
 ddp@1.0.13
 deps@1.0.6

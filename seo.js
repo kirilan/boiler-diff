@@ -1,7 +1,7 @@
 Meteor.startup(function() {
   if(Meteor.isClient) {
     SEO.config({
-      title: 'IT Admin DAshboard',
+      title: 'IT Admin Dashboard',
       meta: {
         'description': 'A project by Kiril Dimitrov'
       },

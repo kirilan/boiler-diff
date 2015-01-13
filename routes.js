@@ -6,7 +6,6 @@ Router.map(function() {
 
   this.route('dashboard', {
     path: '/dashboard',
-    loginRequired: 'entrySignIn',
     waitOn: function() {
       return this.subscribe("items");
     },
