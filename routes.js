@@ -8,7 +8,7 @@ Router.map(function() {
     path: '/dashboard',
     waitOn: function() {
       return this.subscribe("items");
-    },    
+    },
     onAfterAction: function() {
       SEO.set({
         title: 'Dashboard | ' + SEO.settings.title

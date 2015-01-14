@@ -3,11 +3,15 @@
     <div class="page-header">
       <h1>Dashboard</h1>
     </div>
-
-    {{#each vi_hosts}}
-        <li>{{Name}} -- {{#each creq_hosts}} {{this}} {{/each}}</li>
-
+    <h4>no creq record found for the following vCenter VMs</h4>
+    <ul>
+    {{#each vcenter_hosts}}
+      {{#if creq_hosts}}
+        {{else}}
+        <li> {{Name}} </li>
+      {{/if}}
     {{/each}}
+    </ul>
 
   </div>
 </template>
