@@ -1,7 +1,7 @@
 Meteor.startup(function() {
   if(Meteor.isClient) {
     SEO.config({
-      title: 'IT Admin Dashboard',
+      title: 'ESV',
       meta: {
         'description': 'A project by Kiril Dimitrov'
       },

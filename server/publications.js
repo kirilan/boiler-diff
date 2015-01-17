@@ -1,7 +1,15 @@
-Meteor.publishComposite("items", function() {
+Meteor.publishComposite("VM_Compliance", function() {
   return {
     find: function() {
       return VM_Compliance.find({});
+    }
+  }
+});
+
+Meteor.publishComposite("CREQ_Compliance", function() {
+  return {
+    find: function() {
+      return CREQ_Compliance.find({});
     }
   }
 });

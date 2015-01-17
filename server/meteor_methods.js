@@ -1,6 +1,8 @@
 Meteor.methods({
   'vcenter_compliance': function(){
+
     VM_Compliance.remove({})
+
     ServerListESX.find().forEach(
       function (doc) {
       var creq =  SystemListCREQ.findOne({DESCRIPTION: {$regex: doc.Name, $options: 'i'}})
@@ -36,6 +38,29 @@ Meteor.methods({
 
       }
     )
-
+  },
+  'creq_compliance': function(){
+    CREQ_Compliance.remove({})
+    SystemListCREQ.find().forEach(
+      function (doc) {
+          if (doc.DECOMMISSIONED      === 'N' &&
+              doc.VIRTUAL_FLAG        === 'N' &&
+              doc.HARDWARE_STATUS     !== 'Active' &&
+              doc.HS_FLAG_DESCRIPTION  == 'Server') {
+            console.log(doc.DESCRIPTION);
+            CREQ_Compliance.upsert(
+              {//selector
+                DESCRIPTION: doc.DESCRIPTION
+              },
+              {//modifier
+                $set:{  DESCRIPTION: doc.DESCRIPTION,
+                        HW_Compliance: 'Status: ' + doc.HARDWARE_STATUS +
+                        ' SN: '+doc.SERVER_SN
+                }
+              }
+            )
+          }
+      }
+    )
   }
 });

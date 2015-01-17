@@ -7,7 +7,7 @@ Router.map(function() {
   this.route('dashboard', {
     path: '/dashboard',
     waitOn: function() {
-      return this.subscribe("items");
+      return this.subscribe("VM_Compliance") && this.subscribe("CREQ_Compliance");
     },
     onAfterAction: function() {
       SEO.set({
