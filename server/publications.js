@@ -1,18 +1,8 @@
 Meteor.publishComposite("items", function() {
   return {
     find: function() {
-      return ServerListESX.find({});
+      return VM_Compliance.find({});
     }
-     ,
-     children: [
-       {
-         find: function(item) {
-           return SystemListCREQ.find(
-           {DESCRIPTION: {$regex: item.Name, $options: 'i'}}
-           );
-         }
-       }
-     ]
   }
 });
 

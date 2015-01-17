@@ -3,15 +3,11 @@
     <div class="page-header">
       <h1>Dashboard</h1>
     </div>
-    <h4>no creq record found for the following vCenter VMs</h4>
-    <ul>
-    {{#each vcenter_hosts}}
-      {{#if creq_hosts}}
-        {{else}}
-        <li> {{Name}} </li>
-      {{/if}}
-    {{/each}}
-    </ul>
+    <h4>Compliance errors found for the following vCenter VMs</h4>
+
+      {{> tabular table=TabularTables.VI_Compliance class="table table-striped table-bordered table-condensed"}}
 
   </div>
+  <button type="button" class="btn btn-xs refresh-compliance">Refresh</button>
+
 </template>
