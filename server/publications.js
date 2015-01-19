@@ -62,3 +62,19 @@ Meteor.publishComposite("VI", function() {
     // ]
   }
 });
+
+Meteor.publishComposite("apps", function() {
+  return {
+    find: function() {
+      return AppsListCREQ.find({});
+    }
+    // ,
+    // children: [
+    //   {
+    //     find: function(item) {
+    //       return [];
+    //     }
+    //   }
+    // ]
+  }
+});

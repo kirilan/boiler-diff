@@ -34,11 +34,11 @@
         {{/if}}
 
         <ul class="nav navbar-nav navbar-right">
-          <li class="{{ isActiveRoute 'home' }}"><a href="{{ pathFor 'home' }}"><i class="fa fa-home"></i> Home</a></li>
-          <li class="{{ isActivePath 'dashboard' }}"><a href="{{ pathFor 'dashboard' }}"><i class="fa fa-gear"></i> Dashboard</a></li>
-          <li class="{{ isActivePath 'creq' }}"><a href="{{ pathFor 'creq' }}"><i class="fa fa-gear"></i> CREQ</a></li>
-          <li class="{{ isActivePath 'scom' }}"><a href="{{ pathFor 'scom' }}"><i class="fa fa-gear"></i> SCOM</a></li>
-          <li class="{{ isActivePath 'vi' }}"><a href="{{ pathFor 'vi' }}"><i class="fa fa-gear"></i> VI</a></li>
+          <li class="{{ isActiveRoute regex='home' }}"><a href="{{ pathFor 'home' }}"><i class="fa fa-home"></i> Home</a></li>
+          <li class="{{ isActivePath regex='dashboard' }}"><a href="{{ pathFor 'dashboard' }}"><i class="fa fa-gear"></i> Dashboard</a></li>
+          <li class="{{ isActivePath regex='creq' }}"><a href="{{ pathFor 'creq' }}"><i class="fa fa-gear"></i> CREQ</a></li>
+          <li class="{{ isActivePath regex='scom' }}"><a href="{{ pathFor 'scom' }}"><i class="fa fa-gear"></i> SCOM</a></li>
+          <li class="{{ isActivePath regex='vi' }}"><a href="{{ pathFor 'vi' }}"><i class="fa fa-gear"></i> VI</a></li>
         </ul>
       </div>
 

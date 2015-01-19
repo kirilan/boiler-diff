@@ -1,10 +1,21 @@
 <template name="creq">
-  <div class="creq">
+
     <div class="page-header">
       <h1>CREQ Systems View</h1>
-
-    {{> tabular table=TabularTables.CREQ class="table table-hover table-striped table-bordered table-condensed"}}
-
     </div>
-  </div>
+    <div class="creq-systems">
+      {{> tabular table=TabularTables.CREQ class="table table-hover table-striped table-bordered table-condensed"}}
+    </div>
+
+
+    {{> creq_apps}}
+
+</template>
+
+<template name="creq_apps">
+<div class= "creq-apps">
+  <h3> Associated Applications</h3>
+  <h4>{{selector.DESCRIPTION}} {{selector.ASSOCIATED_APPLICATION}} </h4>
+  {{> tabular table=TabularTables.apps selector=selector class="table table-hover table-striped table-bordered table-condensed"}}
+</div>
 </template>

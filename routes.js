@@ -19,7 +19,7 @@ Router.map(function() {
   this.route('creq', {
     path: '/creq',
     waitOn: function() {
-      return this.subscribe("CREQList");
+      return this.subscribe("CREQList") && this.subscribe("apps");
     },
     onAfterAction: function() {
       SEO.set({
