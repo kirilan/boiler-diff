@@ -4,20 +4,21 @@
       <h1>Dashboard - compliance checks</h1>
     </div>
     <h3>Compliance checks failed for the following vCenter VMs</h3>
-      (VM.Name not in CREQ.DESCRIPTION; VM.Name not in SCOM.ComputerName)
-      {{> tabular table=TabularTables.VI_Compliance class="table table-striped table-bordered table-condensed"}}
+      <b>CREQ Compliance</b> - a VM Name has no coresponding record in CREQ based on record.DESCRIPTION <br>
+      <b>SCOM Compliance</b> - a VM Name has no coresponding agent in SCOM based on Agent.Computername <br>
+
+      {{> tabular table=TabularTables.VI_Compliance class="table table-hover table-striped table-bordered table-condensed"}}
 
       <button type="button" class="btn btn-xs refresh-vmcompliance">Refresh VMs</button>
       <br>
       <h3> Compliance checks failed for the following CREQ Entries</h3>
-      (DECOMMISSIONED      = 'N'
-      VIRTUAL_FLAG        = 'N'
-      HARDWARE_STATUS     != 'Active'
-      HS_FLAG_DESCRIPTION  = 'Server'
-      )
+      <b>CREQ HW_Compliance</b> - has 2 possible scenarios:<br>
+          a) A system is not decomissioned; is not virtual ; Associated Hardware record is NOT set to "Active"; and system is a "Server"<br>
+          b) A system is decomissioned; is not virtual; Associated Hardware IS "Active"; and system is a "Server" <br>
 
-      {{> tabular table=TabularTables.CREQ_Compliance class="table table-striped table-bordered table-condensed"}}
+      {{> tabular table=TabularTables.CREQ_Compliance class="table table-hover table-striped table-bordered table-condensed"}}
 
       <button type="button" class="btn btn-xs refresh-creqcompliance">Refresh CREQ</button>
   </div>
-</template>
+
+  </template>

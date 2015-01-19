@@ -15,7 +15,7 @@ Meteor.methods({
           {
             //modifier
             $set:{  VMName: doc.Name,
-                    CREQ_Compliance: 'failed'
+                    CREQ_Compliance: 'no record found'
                   }
           }
         );
@@ -30,7 +30,7 @@ Meteor.methods({
           {
               //modifier
               $set:{  VMName: doc.Name,
-                      SCOM_Compliance: 'failed'
+                      SCOM_Compliance: 'no record found'
                     }
           }
         );
@@ -43,10 +43,16 @@ Meteor.methods({
     CREQ_Compliance.remove({})
     SystemListCREQ.find().forEach(
       function (doc) {
-          if (doc.DECOMMISSIONED      === 'N' &&
+          if (
+              (doc.DECOMMISSIONED      === 'N' &&
               doc.VIRTUAL_FLAG        === 'N' &&
               doc.HARDWARE_STATUS     !== 'Active' &&
-              doc.HS_FLAG_DESCRIPTION  == 'Server') {
+              doc.HS_FLAG_DESCRIPTION  == 'Server') ||
+              (doc.DECOMMISSIONED      === 'Y' &&
+              doc.VIRTUAL_FLAG        === 'N' &&
+              doc.HARDWARE_STATUS     == 'Active' &&
+              doc.HS_FLAG_DESCRIPTION  == 'Server')
+              ) {
             console.log(doc.DESCRIPTION);
             CREQ_Compliance.upsert(
               {//selector
@@ -54,8 +60,10 @@ Meteor.methods({
               },
               {//modifier
                 $set:{  DESCRIPTION: doc.DESCRIPTION,
-                        HW_Compliance: 'Status: ' + doc.HARDWARE_STATUS +
-                        ' SN: '+doc.SERVER_SN
+                        HW_Compliance:
+                        'Status: ' + doc.HARDWARE_STATUS +
+                        ' SN: ' + doc.SERVER_SN +
+                        ' Decom: ' + doc.DECOMMISSIONED
                 }
               }
             )
