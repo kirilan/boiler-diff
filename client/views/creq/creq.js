@@ -1,6 +1,4 @@
-Template.creq.rendered = function() {
 
-};
 
 Template.creq_main.events({
   'click tr': function (event) {
@@ -58,7 +56,7 @@ Template.creq_apps.helpers({
     var selectedType = Session.get('selected_system_type');
 
 
-    if (selectedType == 'Application') {
+    if (selectedType == 'Application' || selectedType == 'Domain') {
       return {ASSOCIATED_APPLICATION: selected};
     } else {
       return {DESCRIPTION: selected};

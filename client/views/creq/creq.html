@@ -24,8 +24,17 @@
 
 <template name="creq_apps">
 <div class= "creq-apps">
-  <h3> Associated Applications</h3>
-  <h4>{{selector.DESCRIPTION}} {{selector.ASSOCIATED_APPLICATION}} </h4>
+  {{#if selector.DESCRIPTION}}
+  <h3>Associated Applications</h3>
+  <h5>{{selector.DESCRIPTION}}</h5>
+  {{/if}}
+
+  {{#if selector.ASSOCIATED_APPLICATION}}
+  <h3> Associated Servers</h3>
+  <h5>{{selector.ASSOCIATED_APPLICATION}}</h5>
+  {{/if}}
+
+
   {{> tabular table=TabularTables.apps selector=selector class="table table-hover table-striped table-bordered table-condensed"}}
 </div>
 </template>
