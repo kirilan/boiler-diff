@@ -6,7 +6,7 @@ Meteor.methods({
     ServerListESX.find().forEach(
       function (doc) {
       var creq =  SystemListCREQ.findOne({DESCRIPTION: {$regex: doc.Name, $options: 'i'}})
-      if (!creq) {console.log(doc.Name,' no CREQ entry');
+      if (!creq) {
         VM_Compliance.upsert(
             {
               //selector
@@ -21,7 +21,7 @@ Meteor.methods({
         );
         }
       var creq =  ServerListSCOM.findOne({ComputerName: {$regex: doc.Name, $options: 'i'}})
-      if (!creq) {console.log(doc.Name,' no SCOM entry');
+      if (!creq) {
         VM_Compliance.upsert(
           {
               //selector
@@ -53,7 +53,7 @@ Meteor.methods({
               doc.HARDWARE_STATUS     == 'Active' &&
               doc.HS_FLAG_DESCRIPTION  == 'Server')
               ) {
-            console.log(doc.DESCRIPTION);
+            
             CREQ_Compliance.upsert(
               {//selector
                 DESCRIPTION: doc.DESCRIPTION
