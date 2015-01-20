@@ -3,13 +3,23 @@
     <div class="page-header">
       <h1>CREQ Systems View</h1>
     </div>
-    <div class="creq-systems">
-      {{> tabular table=TabularTables.CREQ class="table table-hover table-striped table-bordered table-condensed"}}
-    </div>
 
+    {{> creq_main}}
 
     {{> creq_apps}}
 
+</template>
+
+
+<template name="creq_main">
+  <div class="creq-systems">
+    {{> tabular table=TabularTables.CREQ selector=selector class="table table-hover table-striped table-bordered table-condensed"}}
+  </div>
+
+  {{#if selector}}
+  <button type="button" class="btn btn-primary btn-xs expand">Reset Selection</button>
+  {{/if}}
+  
 </template>
 
 <template name="creq_apps">
