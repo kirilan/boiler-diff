@@ -57,7 +57,10 @@ Template.creq_apps.helpers({
     var selectedType = Session.get('selected_system_type');
 
 
-    if (selectedType == 'Application' || selectedType == 'Domain' ) {
+    if (selectedType == 'Application' ||
+      selectedType == 'Domain' ||
+      selectedType == 'Application (IT Tools/Non end-user application)'
+      ) {
       return {ASSOCIATED_APPLICATION: selected};
     } else {
       return {DESCRIPTION: selected};
