@@ -1,4 +1,6 @@
+Template.creq.rendered = function() {
 
+};
 
 Template.creq_main.events({
   'click tr': function (event) {
@@ -11,7 +13,6 @@ Template.creq_main.events({
   },
   'click .expand': function () {
     Session.set('selected_main',undefined)
-    console.log('1')
   }
 });
 
@@ -34,9 +35,9 @@ Template.creq_apps.events({
     var cellIndexes = dataTable.cells(event.currentTarget).indexes();
 
     if ( (cellIndexes[0].column == 1) && (typeof cellData[0]!= "undefined") ) {
-      console.log(cellData[0]);
       Session.set('selected_main',cellData[0]);
-      Session.set('selected_system',rowData.DESCRIPTION);
+      Session.set('selected_system',cellData[0]);
+      Session.set('selected_system_type','Application');
 
     }
 
@@ -56,7 +57,7 @@ Template.creq_apps.helpers({
     var selectedType = Session.get('selected_system_type');
 
 
-    if (selectedType == 'Application' || selectedType == 'Domain') {
+    if (selectedType == 'Application' || selectedType == 'Domain' ) {
       return {ASSOCIATED_APPLICATION: selected};
     } else {
       return {DESCRIPTION: selected};
