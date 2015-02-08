@@ -12,14 +12,17 @@
 
 
 <template name="creq_main">
+
   <div class="creq-systems">
+
+    <p><button type="button" class="btn btn-primary btn-raised btn-xs show-decommissioned" data-toggle="button" >Show/Hide Decommissioned</button></p>
     {{> tabular table=TabularTables.CREQ selector=selector class="table table-hover table-striped table-bordered table-condensed"}}
   </div>
 
-  {{#if selector}}
+  {{#if selected_main}}
   <button type="button" class="btn btn-primary btn-xs expand">Reset Selection</button>
   {{/if}}
-  
+
 </template>
 
 <template name="creq_apps">

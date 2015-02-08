@@ -1,5 +1,5 @@
 Template.creq.rendered = function() {
-
+  Session.set('showDecommissioned', !Session.get('showDecommissioned'));
 };
 
 Template.creq_main.events({
@@ -13,16 +13,30 @@ Template.creq_main.events({
   },
   'click .expand': function () {
     Session.set('selected_main',undefined)
-  }
+  },
+  'click .show-decommissioned': function(e) {
+    Session.set('showDecommissioned', !Session.get('showDecommissioned'));
+    e.preventDefault();
+  },
 });
 
 Template.creq_main.helpers({
   selector: function () { //return selector to limit apps view
+    var showDecommissioned = Session.get('showDecommissioned');
     var selected = Session.get('selected_main');
+
     if (selected) {
       return {DESCRIPTION: selected};
+    } else if (showDecommissioned) {
+      return {DECOMMISSIONED: 'N'}
     }
 
+  },
+  selected_main : function () {
+    return Session.get('selected_main');
+  },
+  showDecommissioned : function () {
+    return Session.get('showDecommissioned');
   }
 });
 

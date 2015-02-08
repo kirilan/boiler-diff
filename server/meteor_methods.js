@@ -47,7 +47,7 @@ Meteor.methods({
               (doc.DECOMMISSIONED      === 'N' &&     //condition A
               doc.VIRTUAL_FLAG        === 'N' &&      //servers not active
               doc.HARDWARE_STATUS     !== 'Active' &&
-              doc.HS_FLAG_DESCRIPTION  == 'Server') ||
+              doc.HS_FLAG_DESCRIPTION  == 'Server') || //OR
               (doc.DECOMMISSIONED      === 'Y' &&      //condition B
               doc.VIRTUAL_FLAG        === 'N' &&       // Server Active but Decom
               doc.HARDWARE_STATUS     == 'Active' &&
@@ -69,9 +69,13 @@ Meteor.methods({
             )
           };
 
-          if (doc.DECOMMISSIONED      === 'N' && //check if server is physical
-              doc.VIRTUAL_FLAG        === 'N' &&   //and not decomissioned
-              doc.HS_FLAG_DESCRIPTION  == 'Server')
+          if (doc.DECOMMISSIONED      == 'N' && //check if server is physical
+              doc.VIRTUAL_FLAG        == 'N' &&   //and not decomissioned
+              doc.HS_FLAG_DESCRIPTION  == 'Server' &&  //is a server
+              doc.SYSTEM_TYPE_DESC.indexOf('Exadata') == -1 && //is not exadata
+              doc.SYSTEM_PURPOSE.indexOf('Exadata') == -1 &&
+              doc.SYSTEM_TYPE_DESC != 'VMWare ESX' // is not esx hypervisor
+              )
               {
                 var scom =  ServerListSCOM.findOne({ComputerName: {$regex: doc.DESCRIPTION, $options: 'i'}})
                 if (!scom) { //check if server has no SCOM agent
