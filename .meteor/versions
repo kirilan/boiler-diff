@@ -3,7 +3,7 @@ accounts-password@1.0.6
 accounts-ui@1.1.4
 accounts-ui-unstyled@1.1.6
 alanning:roles@1.2.13
-aldeed:tabular@1.0.6
+aldeed:tabular@1.1.0
 anti:fake@0.4.1
 application-configuration@1.0.4
 autoupdate@1.1.5
@@ -50,7 +50,7 @@ livedata@1.0.12
 localstorage@1.0.2
 logging@1.0.6
 manuelschoebel:ms-seo@0.4.1
-matb33:collection-hooks@0.7.9
+matb33:collection-hooks@0.7.11
 meteor@1.1.4
 meteor-platform@1.2.1
 meteorhacks:inject-initial@1.0.0
